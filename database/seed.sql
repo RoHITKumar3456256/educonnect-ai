@@ -30,3 +30,4 @@ VALUES
 ('ds_1', 'National School Leadership Directories & Public Portals', 'public_institution_page', 'Public Access / Fair Use', 18, 'Curated school leadership registries and university advisory councils.'),
 ('ds_2', 'All India Education Summits & Conferences Bio Registry', 'conference_speaker_bio', 'Publicly Disclosed Speaker Profiles', 8, 'Verified speakers and panelists from Bett Asia and EDX Global.'),
 ('ds_3', 'Authorised School Trustee & Board Registry', 'curated_directory', 'Consent & Verified Directories', 4, 'Direct verification with school foundations and trust charters.');
+
