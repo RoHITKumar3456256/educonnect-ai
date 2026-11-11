@@ -8,6 +8,7 @@ import { Analytics } from './pages/Analytics';
 import { SavedProfiles } from './pages/SavedProfiles';
 import { DataSources } from './pages/DataSources';
 import { Settings } from './pages/Settings';
+import { DemoWalkthroughModal } from './components/discovery/DemoWalkthroughModal';
 import { DiscoveryRunResponse, DiscoveryWeights, Profile } from './types';
 import { fetchSavedProfiles } from './services/api';
 
@@ -16,6 +17,15 @@ export const App: React.FC = () => {
   const [discoveryData, setDiscoveryData] = useState<DiscoveryRunResponse | null>(null);
   const [savedCount, setSavedCount] = useState<number>(0);
   const [selectedReferenceProfile, setSelectedReferenceProfile] = useState<Profile | null>(null);
+  const [isDemoVideoOpen, setIsDemoVideoOpen] = useState<boolean>(false);
+
+  // Global window helper for hero CTA
+  useEffect(() => {
+    (window as any).__openDemoVideo = () => setIsDemoVideoOpen(true);
+    return () => {
+      delete (window as any).__openDemoVideo;
+    };
+  }, []);
 
   const [weights, setWeights] = useState<DiscoveryWeights>({
     semantic_weight: 0.45,
@@ -70,6 +80,7 @@ export const App: React.FC = () => {
             setSelectedReferenceProfile(null);
             setCurrentTab('discovery');
           }}
+          onOpenDemoVideo={() => setIsDemoVideoOpen(true)}
           activeRunTitle={
             discoveryData
               ? `Run #${discoveryData.run_id} — ${discoveryData.reference_profile_name}`
@@ -127,6 +138,12 @@ export const App: React.FC = () => {
           )}
         </main>
       </div>
+
+      {/* Demo Video Walkthrough Modal */}
+      <DemoWalkthroughModal
+        isOpen={isDemoVideoOpen}
+        onClose={() => setIsDemoVideoOpen(false)}
+      />
     </div>
   );
 };

@@ -1,13 +1,14 @@
 import React from 'react';
-import { Search, Sparkles, SlidersHorizontal, Bell, HelpCircle } from 'lucide-react';
+import { Search, Sparkles, SlidersHorizontal, Bell, HelpCircle, Play } from 'lucide-react';
 
 interface TopbarProps {
   onSearchGlobal?: (query: string) => void;
   onOpenDiscovery?: () => void;
+  onOpenDemoVideo?: () => void;
   activeRunTitle?: string;
 }
 
-export const Topbar: React.FC<TopbarProps> = ({ onSearchGlobal, onOpenDiscovery, activeRunTitle }) => {
+export const Topbar: React.FC<TopbarProps> = ({ onSearchGlobal, onOpenDiscovery, onOpenDemoVideo, activeRunTitle }) => {
   return (
     <header className="h-16 bg-white border-b border-slate-200 sticky top-0 z-20 px-8 flex items-center justify-between shadow-xs">
       {/* Left: Active Workspace / Context */}
@@ -26,6 +27,15 @@ export const Topbar: React.FC<TopbarProps> = ({ onSearchGlobal, onOpenDiscovery,
 
       {/* Right: Actions & Status */}
       <div className="flex items-center space-x-3">
+        {/* Watch Demo Video Walkthrough Button */}
+        <button
+          onClick={onOpenDemoVideo}
+          className="flex items-center space-x-1.5 px-3 py-2 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-xs font-bold transition shadow-2xs"
+        >
+          <Play className="w-3.5 h-3.5 fill-red-600 text-red-600" />
+          <span>Watch 5-10m Demo Video</span>
+        </button>
+
         {/* Quick Discovery CTA */}
         <button
           onClick={onOpenDiscovery}

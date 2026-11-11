@@ -75,13 +75,23 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onSelectProfil
           <p className="text-slate-300 text-sm leading-relaxed">
             EduConnect AI matches reference education leaders against an authorized, traceable candidate pool using dense sentence embeddings and deterministic multi-signal ranking.
           </p>
-          <div className="pt-2 flex items-center space-x-4">
+          <div className="pt-2 flex flex-wrap items-center gap-3">
             <button
               onClick={() => onNavigate('discovery')}
               className="flex items-center space-x-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-lg shadow-blue-600/30 transition transform hover:-translate-y-0.5"
             >
               <Sparkles className="w-4 h-4" />
               <span>Start New Discovery</span>
+            </button>
+            <button
+              onClick={() => {
+                if ((window as any).__openDemoVideo) {
+                  (window as any).__openDemoVideo();
+                }
+              }}
+              className="flex items-center space-x-2 px-4 py-3 rounded-xl bg-red-600/90 hover:bg-red-500 text-white font-bold text-sm shadow-lg shadow-red-600/30 transition"
+            >
+              <span>▶ Watch Demo Video</span>
             </button>
             <button
               onClick={() => onNavigate('datasources')}
